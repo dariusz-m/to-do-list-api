@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  mysql-todo-app:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todoapp
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+    ports:
+      - "3310:3306"
+
+    volumes:
+      - ./mysql/mysql.cnf:/etc/mysql/conf.d/config-file.cnf
+      - ./mysql/init:/docker-entrypoint-initdb.d/:ro
